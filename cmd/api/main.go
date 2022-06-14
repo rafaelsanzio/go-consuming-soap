@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	log.Println("starting up...")
-	log.Fatal(http.ListenAndServe(":8000", api.NewRouter()))
+	log.Println("starting up on port 5000...")
+	log.Fatal(http.ListenAndServe(":5000", api.NewRouter()))
 }
