@@ -17,6 +17,7 @@ var (
 	ErrGettingParam          = _new("CMN011", "error getting param")
 	ErrUnmarshalingXML       = _new("CMN012", "error unmarshaling XML")
 	ErrReadingBytes          = _new("CMN013", "error reading bytes from request")
+	ErrCountryNotFound       = _new("CMN014", "error country not found")
 )
 
 // pkg/api
