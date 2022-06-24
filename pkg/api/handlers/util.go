@@ -50,6 +50,16 @@ func restoreHttpGet(replace func(url string) (resp *http.Response, err error)) {
 	httpGet = replace
 }
 
+var rateLimitAllow = rateLimit.Allow
+
+func fakeRateLimitAllow() bool {
+	return false
+}
+
+func restoreRateLimitAllow(replace func() bool) {
+	rateLimitAllow = replace
+}
+
 func validateCountryCode(countryCode string) error {
 	if countryCode == "" || len(countryCode) != 2 {
 		return errs.ErrGettingParam.Throwf(applog.Log, errs.ErrFmt, "param with bad format")
@@ -60,7 +70,7 @@ func validateCountryCode(countryCode string) error {
 		return errs.ErrNewRequest.Throwf(applog.Log, errs.ErrFmt, err)
 	}
 
-	if res.StatusCode == http.StatusNotFound {
+	if res.StatusCode != http.StatusOK {
 		return errs.ErrCountryNotFound.Throwf(applog.Log, errs.ErrFmt, fmt.Sprintf("country code: %s", countryCode))
 	}
 
