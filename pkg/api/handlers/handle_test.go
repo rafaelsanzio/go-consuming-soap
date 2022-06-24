@@ -14,7 +14,28 @@ func TestHandleAdapter(t *testing.T) {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	}
 
-	handle := HandleAdapter(handleFunc)
+	testCases := []struct {
+		Name          string
+		HandleFunc    func(w http.ResponseWriter, r *http.Request)
+		RateLimitFunc func() bool
+	}{
+		{
+			Name:          "Handle function",
+			HandleFunc:    handleFunc,
+			RateLimitFunc: rateLimitAllow,
+		}, {
+			Name:          "Handle function with Rate Limit",
+			HandleFunc:    handleFunc,
+			RateLimitFunc: fakeRateLimitAllow,
+		},
+	}
 
-	handle.ServeHTTP(w, r)
+	for _, tc := range testCases {
+		rateLimitAllow = tc.RateLimitFunc
+		defer restoreRateLimitAllow(rateLimitAllow)
+
+		handle := HandleAdapter(tc.HandleFunc)
+
+		handle.ServeHTTP(w, r)
+	}
 }
