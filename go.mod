@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/gorilla/mux v1.8.0
 	github.com/stretchr/testify v1.7.2
+	golang.org/x/time v0.0.0-20220609170525-579cf78fd858
 )
 
 require (
