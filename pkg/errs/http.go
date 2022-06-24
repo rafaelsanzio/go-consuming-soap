@@ -21,3 +21,7 @@ func HttpInternalServerError(w http.ResponseWriter) {
 func HttpNotFound(w http.ResponseWriter) {
 	w.WriteHeader(http.StatusNotFound)
 }
+
+func HttpToManyRequests(w http.ResponseWriter) {
+	w.WriteHeader(http.StatusTooManyRequests)
+}
