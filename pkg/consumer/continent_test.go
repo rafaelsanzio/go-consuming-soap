@@ -15,7 +15,7 @@ func TestContinentConsumerList(t *testing.T) {
 	testCases := []struct {
 		Name                 string
 		NewRequestFunction   func(method string, url string, body io.Reader) (*http.Request, error)
-		XMLUnmarshalFunction func(data []byte, v any) error
+		XMLUnmarshalFunction func(data []byte, v interface{}) error
 		ExpectedContinents   []continent.Continent
 	}{
 		{
