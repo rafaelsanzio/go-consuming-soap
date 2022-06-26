@@ -42,10 +42,10 @@ func restoreIoutilReadAll(replace func(r io.Reader) ([]byte, error)) {
 
 var xmlUnmarshal = xml.Unmarshal
 
-func fakeXMLUnmarshal(data []byte, v any) error {
+func fakeXMLUnmarshal(data []byte, v interface{}) error {
 	return errs.ErrUnmarshalingXML
 }
 
-func restoreXMLUnmarshal(replace func(data []byte, v any) error) {
+func restoreXMLUnmarshal(replace func(data []byte, v interface{}) error) {
 	xmlUnmarshal = replace
 }
