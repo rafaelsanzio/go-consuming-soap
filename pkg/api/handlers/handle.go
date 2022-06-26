@@ -17,7 +17,7 @@ func HandleAdapter(hf http.HandlerFunc) http.HandlerFunc {
 		applog.Log.Infof("Requesting - Method: %s, URL %s", r.Method, r.URL)
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-		if rateLimitAllow() == false {
+		if !rateLimitAllow() {
 			applog.Log.Warnf("Rate limit to requests was exceed")
 			errs.HttpToManyRequests(w)
 			return
