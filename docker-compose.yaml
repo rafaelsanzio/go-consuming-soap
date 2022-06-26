@@ -1,0 +1,7 @@
+version: "3.3"
+services:
+  api:
+    container_name: "go-consuming-soap"
+    build: "./"
+    ports:
+      - "8080:8080"
