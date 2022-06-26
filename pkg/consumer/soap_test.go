@@ -24,7 +24,7 @@ func TestSoapRequest(t *testing.T) {
 		NewRequestFunction    func(method string, url string, body io.Reader) (*http.Request, error)
 		ClientDoFunction      func(req *http.Request) (*http.Response, error)
 		IoutilReadAllFunction func(r io.Reader) ([]byte, error)
-		XMLUnmarshalFunction  func(data []byte, v any) error
+		XMLUnmarshalFunction  func(data []byte, v interface{}) error
 		ExpectedError         bool
 	}{
 		{
