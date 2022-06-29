@@ -22,7 +22,7 @@ Go to the project directory
 
 Install dependencies
 
-- Need to install docker (https://docs.docker.com/desktop/windows/install/)
+- Need to install docker (https://docs.docker.com/desktop/)
 
 Start the server
 
