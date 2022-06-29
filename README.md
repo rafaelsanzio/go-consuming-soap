@@ -6,6 +6,38 @@ A Golang API design to consume requests SOAP and return JSON.
 
 **Server:** Golang, Docker, Travis CI
 
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/rafaelsanzio/go-consuming-soap
+```
+
+Go to the project directory
+
+```bash
+  cd go-consuming-soap
+```
+
+Install dependencies
+
+- Need to install docker (https://docs.docker.com/desktop/windows/install/)
+
+Start the server
+
+```bash
+  docker-compose up
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  make test
+```
+
 ## API Reference
 
 #### Get all continents
@@ -106,3 +138,7 @@ A Golang API design to consume requests SOAP and return JSON.
   "PhoneCode": 55
 }
 ```
+
+## Author
+
+- [@rafaelsanzio](https://www.github.com/rafaelsanzio)
